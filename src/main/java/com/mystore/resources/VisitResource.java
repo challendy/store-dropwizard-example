@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.codahale.metrics.annotation.Timed;
 import com.mystore.core.Visit;
 import com.mystore.db.VisitDAO;
 
@@ -23,6 +24,7 @@ public class VisitResource  {
         this.visitDAO = visitDAO;
     }
     
+    @Timed(name = "createVisit")
     @POST
     @UnitOfWork
     public Visit createVist(Visit visit) {
